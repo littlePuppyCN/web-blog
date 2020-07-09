@@ -25,7 +25,16 @@ Vue.use(VueRouter)
     name: 'index',
     component: () => import(/* webpackChunkName: "about" */ '../components/showBlog.vue')
   },
- 
+  {
+    path: '/add',
+    name: 'add',
+    component: () => import(/* webpackChunkName: "about" */ '../components/addBlog.vue')
+  },
+  {
+    path: '/update/:id',
+    name: 'update',
+    component: () => import(/* webpackChunkName: "about" */ '../components/updateBlog.vue')
+  },
 ]
 
 const router = new VueRouter({
