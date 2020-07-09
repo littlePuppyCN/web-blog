@@ -23,8 +23,9 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'index',
-    component: () => import(/* webpackChunkName: "about" */ '../views/blog.vue')
-  }
+    component: () => import(/* webpackChunkName: "about" */ '../components/showBlog.vue')
+  },
+ 
 ]
 
 const router = new VueRouter({

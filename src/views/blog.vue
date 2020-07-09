@@ -1,11 +1,35 @@
 <template>
     <div>
-        
+        <el-container>
+          <el-header>
+              <el-row class="title">
+                  <el-col :span="5">
+                      <h1>
+                          <router-link to='/'>my blog</router-link>
+                      </h1>
+                  </el-col>
+                  <el-col :span="14" class="search">
+                      
+                  </el-col>
+                  <el-col :span="5">
+
+                  </el-col>
+             </el-row>
+          </el-header>
+
+          <el-container class="main-container">
+            <el-main>
+                <router-view >
+                    <router-link></router-link>
+                </router-view>
+            </el-main>
+          </el-container>
+          
+        </el-container>
     </div>
 </template>
 
 <script>
-import axios from 'axios'
 export default {
     mounted(){
         // var obj = {
@@ -22,6 +46,34 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang='less'>
+    .el-header{
+        line-height: 60px;
+        .title{
+            height: 100%;
+            max-width: 985px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.2);
+            .el-col{
+                height: 100%;
+            }
+            .search{
+                text-align: center;
+            }
+            h1>a{
+                color: #ccc;
+                text-decoration: none;
+                font-size: 14px;
+                line-height: 60px;
+                display: block;
+            }
+        }
+    }
+    .main-container{
+        width: 100%;
+        height: 100%;
+    }
+    .el-main{
+        margin: 0 auto;
+    }
 </style>
