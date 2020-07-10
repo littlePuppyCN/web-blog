@@ -8,7 +8,9 @@
               <router-link to="/">my blog</router-link>
             </h1>
           </el-col>
-          <el-col :span="14" class="search"></el-col>
+          <el-col :span="14" class="search">
+            <el-input v-model="search" placeholder="请输入姓名/分类匹配搜索"></el-input>
+          </el-col>
           <el-col :span="5">
             <h1>
               <router-link to="/add">add blog</router-link>
@@ -19,7 +21,7 @@
 
       <el-container class="main-container">
         <el-main>
-          <router-view>
+          <router-view :search='search'>
             <router-link></router-link>
           </router-view>
         </el-main>
@@ -30,17 +32,13 @@
 
 <script>
 export default {
-  mounted() {
-    // var obj = {
-    //    id:'1',
-    //    name:'xxx',
-    //    email:'abc@123.com',
-    //    edcation:'无',
-    //    profie:'none'
-    // }
-    //    axios.post('/adduser',obj).then(res=>{
-    //        console.log(res)
-    //    })
+  data() {
+    return {
+      search: ""
+    };
+  },
+  methods:{
+
   }
 };
 </script>
@@ -60,6 +58,11 @@ export default {
     }
     .search {
       text-align: center;
+    }
+    /deep/  .el-input__inner {
+      background: rgba(0, 0, 0, 0.2);
+      outline: none;
+      border: none;
     }
     h1 {
       text-align: center;
@@ -81,4 +84,5 @@ main {
   margin: 0 auto;
 }
 
+  
 </style>

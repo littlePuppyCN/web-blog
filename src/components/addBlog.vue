@@ -51,7 +51,6 @@ export default {
 
 <style lang='less'>
 .blog {
-  background: lightskyblue;
   margin-bottom: 20px;
   border-radius: 6px;
   padding-bottom: 10px;

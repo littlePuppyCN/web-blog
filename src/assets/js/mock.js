@@ -7,7 +7,7 @@ Mock.setup({
 })
 // 创建一个数组用来接收模拟的数据
 const mocklist = []
-const count = 5;
+const count = 10;
 
 for (let i = 0; i < count; i++) {
   mocklist.push(Mock.mock({
@@ -17,7 +17,7 @@ for (let i = 0; i < count; i++) {
     email: '@email',
     'education|1': ['本科', '大专', '硕士', '博士', '中专'],
     'graduationschool|1': ['西南财经', '北京交通大学', '重庆工商大学', '清华大学', '西南大学', '上海复旦大学'],
-    'profession|1': ['大学老师', '警察', '白领'],
+    'profession|1': ['大学老师', '警察', '白领','前端','后端'],
     profile: '@cparagraph'
   }))
 }

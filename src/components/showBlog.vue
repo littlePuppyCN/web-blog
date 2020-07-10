@@ -1,10 +1,9 @@
 <template>
   <div>
-    <div class="blog" v-for="(item,index) in blog" :key="index" @click="update(item.id)">
+    <div class="blog" v-for="(item,index) in blogFilter" :key="index">
       <div class="title">姓名：{{item.name}}</div>
       <div class="inner">
         内容:
-        <!-- {{item.profile}} -->
         <el-input
           type="textarea"
           :rows="3"
@@ -13,17 +12,22 @@
           style="margin-top:5px;padding-right:8px;"
         ></el-input>
       </div>
-      <div class="title">分类：{{item.profession}}</div>
+      <div class="title">职业：{{item.profession}}</div>
+      <div class="update" style="text-align:right;padding-right:10px;" @click="update(item.id)">编辑</div>
     </div>
+    <div  v-if='noBlog' style="height:100px;background:red;">无结果</div>
+
   </div>
 </template>
 
 <script>
 import axios from "axios";
 export default {
+  props: ["search"],
   data() {
     return {
-      blog: []
+      blog: [],
+      noBlog:false
     };
   },
   methods: {
@@ -31,13 +35,32 @@ export default {
       this.$router.push(`/update/${id}`);
     }
   },
+  computed: {
+    blogFilter() {
+      return this.blog.filter((item, index) => {
+          if(this.search == ''){
+              return this.blog;
+          }else{         
+            return item.profession == this.search || item.name == this.search || item.education == this.search;
+          }
+      });
+    }
+  },
+  watch:{
+      blogFilter:function(val){
+        if(val.length == 0){
+            this.noBlog = true
+        }else{
+            this.noBlog = false
+        }
+      }
+  },
   created() {
     axios.get("/getlist").then(res => {
       for (var i = 0; i < res.data.length; i++) {
         this.blog.push(res.data[i]);
       }
     });
-    console.log(this.blog);
   }
 };
 </script>
@@ -49,9 +72,20 @@ export default {
   border-radius: 6px;
   padding-bottom: 10px;
   padding-left: 8px;
-  cursor: pointer;
   .inner {
     margin-top: 10px;
+  }
+  textarea {
+    background: none !important;
+    border: none;
+    resize: none;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .update{
+      cursor: pointer;
+  }
+  .update:hover{
+      color: #00cc99;
   }
 }
 </style>
