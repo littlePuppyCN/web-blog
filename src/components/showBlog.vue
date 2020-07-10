@@ -15,7 +15,7 @@
       <div class="title">职业：{{item.profession}}</div>
       <div class="update" style="text-align:right;padding-right:10px;" @click="update(item.id)">编辑</div>
     </div>
-    <div  v-if='noBlog' style="height:100px;background:red;">无结果</div>
+    <div  v-if='noBlog||blog.length==0' style="height:100px;background:red;">无数据</div>
 
   </div>
 </template>

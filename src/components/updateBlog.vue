@@ -21,9 +21,12 @@
           <el-radio :label="'大学老师'">大学老师</el-radio>
           <el-radio :label="'警察'">警察</el-radio>
           <el-radio :label="'白领'">白领</el-radio>
+          <el-radio :label="'前端'">前端</el-radio>
+          <el-radio :label="'后端'">后端</el-radio>
         </el-radio-group>
       </div>
       <el-button @click="submit">更新</el-button>
+      <el-button @click="del">删除</el-button>
     </div>
   </div>
 </template>
@@ -44,6 +47,19 @@ export default {
         .then(res => {
           this.$message({
             message: "更新成功",
+            type: "success"
+          });
+        })
+        .then(() => {
+          this.$router.push("/");
+        });
+    },
+    del(){
+      axios
+        .post("/deleteuser", this.current_user.id)
+        .then(res => {
+          this.$message({
+            message: "删除成功",
             type: "success"
           });
         })

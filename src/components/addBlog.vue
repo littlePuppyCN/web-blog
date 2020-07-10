@@ -16,6 +16,8 @@
         <el-radio :label="'大学老师'">大学老师</el-radio>
         <el-radio :label="'警察'">警察</el-radio>
         <el-radio :label="'白领'">白领</el-radio>
+        <el-radio :label="'前端'">前端</el-radio>
+        <el-radio :label="'后端'">后端</el-radio>
       </el-radio-group>
     </div>
     <el-button @click='submit'>提交</el-button>
